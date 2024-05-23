@@ -1,12 +1,7 @@
 # syntax=docker/dockerfile:1
 FROM continuumio/miniconda3:23.10.0-1
 
-RUN apt-get update && apt-get install -y \
-build-essential
-ghostscript \
-git \
-git-annex \
-openssh-client
+RUN apt-get update && apt-get install -y build-essential ghostscript git git-annex opennsh-client
 
 WORKDIR /tmp/
 RUN wget https://mirrors.sarata.com/gnu/gsl/gsl-2.7.tar.gz && \
