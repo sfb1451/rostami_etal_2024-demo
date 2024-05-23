@@ -1,0 +1,21 @@
+name: ClusteredNetwork_pub
+channels:
+  - soumith
+  - defaults
+  - conda-forge
+dependencies:
+  - scipy
+  - notebook
+  - ipython
+  - nest-simulator=2.20.2
+  - ghostscript
+  - pip
+  - pip:
+    - pyx
+  - python=3.10.6
+  - joblib
+  - networkx
+  - scikit-learn
+  - matplotlib
+  - pandas
+  - cython=0.29.32
