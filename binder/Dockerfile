@@ -22,3 +22,13 @@ COPY . ${HOME}
 USER root
 RUN chown -R ${NB_UID} ${HOME}
 USER ${NB_USER}
+
+# --- other tweaks on top ---
+
+# have a CLI editor for sanity
+RUN app install vim nano
+
+# the base docker image defines workdir in /app
+# however, here we need (?) to run as user jovyan
+# and some jupyter lab functionalities do not work when dropped into (root-owned?) /app
+WORKDIR ${HOME}
