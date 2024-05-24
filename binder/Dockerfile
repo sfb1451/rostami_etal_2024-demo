@@ -26,7 +26,7 @@ USER ${NB_USER}
 # --- other tweaks on top ---
 
 # have a CLI editor for sanity
-RUN app install vim nano
+RUN apt install vim nano
 
 # the base docker image defines workdir in /app
 # however, here we need (?) to run as user jovyan
