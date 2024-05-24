@@ -2,7 +2,7 @@
 FROM fschmitt/clustered_network_pub:nest2_20
 
 # make sure we have a CLI editor
-RUN apt install vim nano
+RUN apt-get install -y vim nano
 
 # --- required by binder ---
 # https://mybinder.readthedocs.io/en/latest/tutorials/dockerfile.html
