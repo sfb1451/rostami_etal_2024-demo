@@ -1,6 +1,9 @@
 # syntax=docker/dockerfile:1
 FROM fschmitt/clustered_network_pub:nest2_20
 
+# make sure we have a CLI editor
+RUN apt install vim nano
+
 # --- required by binder ---
 # https://mybinder.readthedocs.io/en/latest/tutorials/dockerfile.html
 
@@ -24,9 +27,6 @@ RUN chown -R ${NB_UID} ${HOME}
 USER ${NB_USER}
 
 # --- other tweaks on top ---
-
-# have a CLI editor for sanity
-RUN apt install vim nano
 
 # the base docker image defines workdir in /app
 # however, here we need (?) to run as user jovyan
