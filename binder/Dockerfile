@@ -32,3 +32,11 @@ USER ${NB_USER}
 # however, here we need (?) to run as user jovyan
 # and some jupyter lab functionalities do not work when dropped into (root-owned?) /app
 WORKDIR ${HOME}
+
+# some tweaks from the base docker image need to be applied for the non-root user
+# todo: possibly also library paths?
+
+RUN conda init bash
+
+# set git config
+RUN git config --global user.name "Dr. Panik" && git config --global user.email "panik@example.com"
