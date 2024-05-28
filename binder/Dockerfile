@@ -5,7 +5,7 @@ FROM fschmitt/clustered_network_pub:nest2_20
 RUN apt-get install -y vim nano
 
 # install datalad in the conda env, hoping pip install is more lightweight
-RUN conda init && conda_activate EI_clustered_network && pip install --no-warn-script-location datalad
+RUN conda init && conda activate EI_clustered_network && pip install --no-warn-script-location datalad
 
 # --- required by binder ---
 # https://mybinder.readthedocs.io/en/latest/tutorials/dockerfile.html
