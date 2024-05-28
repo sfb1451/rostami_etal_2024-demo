@@ -4,6 +4,9 @@ FROM fschmitt/clustered_network_pub:nest2_20
 # make sure we have a CLI editor
 RUN apt-get install -y vim nano
 
+# install datalad in the conda env, hoping pip is more lightweight
+RUN conda activate EI_clustered_network && pip install datalad
+
 # --- required by binder ---
 # https://mybinder.readthedocs.io/en/latest/tutorials/dockerfile.html
 
