@@ -7,7 +7,8 @@ RUN apt-get install -y vim nano
 # --- required by binder ---
 # https://mybinder.readthedocs.io/en/latest/tutorials/dockerfile.html
 
-RUN python3 -m pip install --no-cache-dir notebook jupyterlab
+RUN python3 -m pip install --no-cache-dir notebook jupyterlab bash_kernel
+RUN python -m bash_kernel.install
 
 ARG NB_USER=jovyan
 ARG NB_UID=1000
