@@ -1,12 +1,8 @@
 # syntax=docker/dockerfile:1
 FROM fschmitt/clustered_network_pub:nest2_20
 
-# Enable neurodebian repo
-RUN wget -O- http://neuro.debian.net/lists/bullseye.de-fzj.libre | tee /etc/apt/sources.list.d/neurodebian.sources.lits \
-    && apt-key adv --recv-keys --keyserver hkps://keyserver.ubuntu.com 0xA5D32F012649A5A9
-
-# Add a system-wide datalad installation (and CLI editors for convenience)
-RUN apt-get update && apt-get install -y datalad vim nano
+# make sure we have a CLI editor
+RUN apt-get install -y vim nano
 
 # --- required by binder ---
 # https://mybinder.readthedocs.io/en/latest/tutorials/dockerfile.html
