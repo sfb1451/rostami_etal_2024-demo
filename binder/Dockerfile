@@ -1,12 +1,12 @@
 # syntax=docker/dockerfile:1
 FROM fschmitt/clustered_network_pub:nest2_20
 
-# make sure we have a CLI editor
-RUN apt-get install -y vim nano
+# Enable neurodebian repo
+RUN echo "deb [trusted=yes] http://neurodebian.inm7.de/debian bullseye main contrib" | tee \
+    /etc/apt/sources.list.d/neurodebian.sources
 
-# install datalad in the conda env, hoping pip install is more lightweight
-RUN conda init
-RUN conda activate EI_clustered_network && pip install --no-warn-script-location datalad
+# Add a system-wide datalad installation (and CLI editors for convenience)
+RUN apt-get update && apt-get install -y datalad vim nano
 
 # --- required by binder ---
 # https://mybinder.readthedocs.io/en/latest/tutorials/dockerfile.html
