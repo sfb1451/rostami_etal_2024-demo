@@ -2,11 +2,11 @@
 FROM fschmitt/clustered_network_pub:nest2_20
 
 # Enable neurodebian repo
-RUN echo "deb [trusted=yes] http://neurodebian.inm7.de/debian bullseye main contrib" | tee \
-    /etc/apt/sources.list.d/neurodebian.sources
+RUN echo "deb [trusted=yes] http://neurodebian.inm7.de/debian bullseye main contrib\n" | tee \
+    /etc/apt/sources.list.d/neurodebian.list
 
 # Add a system-wide datalad installation (and CLI editors for convenience)
-RUN apt-get update && apt-get install -y datalad vim nano
+RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y datalad vim nano
 
 # --- required by binder ---
 # https://mybinder.readthedocs.io/en/latest/tutorials/dockerfile.html
