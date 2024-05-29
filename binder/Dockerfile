@@ -1,12 +1,8 @@
 # syntax=docker/dockerfile:1
 FROM fschmitt/clustered_network_pub:nest2_20
 
-# Enable neurodebian repo
-RUN echo "deb [trusted=yes] http://neurodebian.inm7.de/debian bullseye main contrib\n" | tee \
-    /etc/apt/sources.list.d/neurodebian.list
-
-# Add a system-wide datalad installation (and CLI editors for convenience)
-RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y datalad vim nano
+# Add CLI editors in case they are useful
+RUN apt-get update && apt-get install -y vim nano
 
 # --- required by binder ---
 # https://mybinder.readthedocs.io/en/latest/tutorials/dockerfile.html
@@ -38,10 +34,8 @@ USER ${NB_USER}
 # and some jupyter lab functionalities do not work when dropped into (root-owned?) /app
 WORKDIR ${HOME}
 
-# some tweaks from the base docker image need to be applied for the non-root user
-# todo: possibly also library paths?
-
+# initialize conda for the non-root user's bash
 RUN conda init bash
 
 # set git config
-RUN git config --global user.name "Dr. Panik" && git config --global user.email "panik@example.com"
+RUN git config --global user.name "Binder User" && git config --global user.email "b.user@example.com"
