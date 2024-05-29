@@ -38,4 +38,6 @@ WORKDIR ${HOME}
 RUN conda init bash
 
 # set git config
-RUN git config --global user.name "Binder User" && git config --global user.email "b.user@example.com"
+RUN git config --global user.name "Binder User" \
+    && git config --global user.email "b.user@example.com" \
+    && git config --global advice.detachedHead false
