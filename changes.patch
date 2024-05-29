@@ -1,0 +1,11 @@
+diff --git a/fig_codes/fig3.py b/fig_codes/fig3.py
+index e538500..73bbac1 100644
+--- a/fig_codes/fig3.py
++++ b/fig_codes/fig3.py
+@@ -227,5 +227,5 @@ for setno,setting in enumerate(settings):
+             V_ticks = [-20,0,20,40],I_ticks = [-15,0,15],
+             rcparams=rc_params)
+ # save the figure
+-pylab.savefig('fig3.pdf')
++pylab.savefig('fig3.png')
+ 
